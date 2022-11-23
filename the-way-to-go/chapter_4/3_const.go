@@ -28,3 +28,7 @@ func main() {
 //func getNum() int {
 //	return 1
 //}
+
+// 1234
+// 3.1415
+// B: 1 KB: 1024 MB: 1.048576e+06
