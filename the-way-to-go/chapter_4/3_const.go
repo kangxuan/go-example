@@ -8,9 +8,12 @@ const T string = "1234"
 // 隐式类型定义，会自行推断类型
 const Pi = 3.1415
 
+// 多个常量同时定义
+const Monday, Tuesday, Wednesday, Thursday, Friday, Saturday = 1, 2, 3, 4, 5, 6
+
 // 常量组定义嗯
 const (
-	B float64 = 1 << (iota * 10) // iota可以被用作枚举值，第一个为0，依次递增，遇到具体值赋值失效
+	B float64 = 1 << (iota * 10) // iota可以被用作枚举值，第一个为0，依次递增，在每遇到一个新的常量块或单个常量声明时， iota 都会重置为 0
 	KB
 	MB
 )
@@ -21,6 +24,7 @@ const (
 func main() {
 	fmt.Println(T)
 	fmt.Println(Pi)
+	fmt.Println("Monday:", Monday, "Tuesday:", Tuesday, "Wednesday:", Wednesday, "Thursday:", Thursday, "Friday:", Friday, "Saturday:", Saturday)
 	fmt.Println("B:", B, "KB:", KB, "MB:", MB)
 	//fmt.Println(I)
 }
@@ -31,4 +35,5 @@ func main() {
 
 // 1234
 // 3.1415
+// Monday: 1 Tuesday: 2 Wednesday: 3 Thursday: 4 Friday: 5 Saturday: 6
 // B: 1 KB: 1024 MB: 1.048576e+06
