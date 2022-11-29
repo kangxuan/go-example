@@ -14,7 +14,6 @@ func main() {
 	} else {
 		fmt.Println(result)
 	}
-
 }
 
 func RemoveStringSlice(sl []string, start int, end int) (result []string, err error) {
