@@ -11,3 +11,6 @@ func main() {
 	fmt.Println(m1)
 	fmt.Println(m2)
 }
+
+//map[0:a 1:b 2:c]
+//map[a:0 b:1 c:2]
