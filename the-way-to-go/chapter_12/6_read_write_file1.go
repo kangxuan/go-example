@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	// 展示将一个文件的数据拷贝到另一个文件中
 	inputFile := "product.txt"
 	outputFile := "product_copy.txt"
 

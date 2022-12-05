@@ -10,14 +10,14 @@ import (
 	"strings"
 )
 
-// 定义一个Book结构体
-type Book struct {
+type Book struct { // 定义一个Book结构体
 	title    string  // 书名
 	price    float64 // 价格
 	quantity int     // 数量
 }
 
 func main() {
+	// 展示读取文件数据
 	// 定义一个Book切片
 	var bks = make([]Book, 1)
 

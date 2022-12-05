@@ -6,11 +6,17 @@ import (
 )
 
 func main() {
+	// 展示将文件中的文本按列读取到切片中
 	file, err := os.Open("products2.txt")
 	if err != nil {
 		panic(err)
 	}
-	defer file.Close()
+	defer func(file *os.File) {
+		err := file.Close()
+		if err != nil {
+			return
+		}
+	}(file)
 
 	// 定义3个字符串切片
 	var col1, col2, col3 []string
@@ -32,6 +38,6 @@ func main() {
 	fmt.Println(col3)
 }
 
-//[kang xuan]
+//[Shan La]
 //[1 2]
 //[100 200]
