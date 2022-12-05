@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/xml"
 	"fmt"
+	"log"
 	"strings"
 )
 
@@ -10,6 +11,7 @@ var t, token xml.Token
 var err error
 
 func main() {
+	// 展示xml的解码和编码
 	input := "<Person><FirstName>Laura</FirstName><LastName>Lynn</LastName></Person>"
 	inputReader := strings.NewReader(input)
 	p := xml.NewDecoder(inputReader)
@@ -33,8 +35,13 @@ func main() {
 		}
 	}
 
+	// 解码
 	input1 := []byte(input)
 	var v interface{}
-	xml.Unmarshal(input1, &v)
+	err = xml.Unmarshal(input1, &v)
+	if err != nil {
+		log.Println("解码失败")
+		return
+	}
 	fmt.Println(v)
 }
