@@ -13,7 +13,9 @@ var err error
 func main() {
 	// 展示xml的解码和编码
 	input := "<Person><FirstName>Laura</FirstName><LastName>Lynn</LastName></Person>"
+	// 生成一个阅读器
 	inputReader := strings.NewReader(input)
+	// 生成xml的阅读器
 	p := xml.NewDecoder(inputReader)
 
 	for t, err = p.Token(); err == nil; t, err = p.Token() {
