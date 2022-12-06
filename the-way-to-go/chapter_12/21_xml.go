@@ -7,11 +7,16 @@ import (
 	"strings"
 )
 
-var t, token xml.Token
+var t xml.Token
 var err error
 
+type Person struct {
+	FirstName string
+	LastName  string
+}
+
 func main() {
-	// 展示xml的解码和编码
+	// 展示两种解码方式
 	input := "<Person><FirstName>Laura</FirstName><LastName>Lynn</LastName></Person>"
 	// 生成一个阅读器
 	inputReader := strings.NewReader(input)
@@ -37,8 +42,10 @@ func main() {
 		}
 	}
 
-	// 解码
-	input1 := []byte(input)
+	fmt.Println("--------")
+
+	// 通过Unmarshal解码
+	input1 := []byte("<Person><FirstName>La</FirstName><LastName>Shan</LastName></Person>")
 	var v interface{}
 	err = xml.Unmarshal(input1, &v)
 	if err != nil {
@@ -46,4 +53,16 @@ func main() {
 		return
 	}
 	fmt.Println(v)
+
+	fmt.Println("--------")
+
+	// 通过Marshal加密
+	person1 := new(Person)
+	person1.LastName = "Shan"
+	person1.FirstName = "La"
+	marshal, err := xml.Marshal(person1)
+	if err != nil {
+		return
+	}
+	fmt.Println(string(marshal))
 }
