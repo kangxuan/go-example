@@ -25,6 +25,7 @@ func main() {
 	}
 }
 
+// doServerStuff
 func doServerStuff(conn net.Conn) {
 	for true {
 		// 定义接受多大是数据
