@@ -26,6 +26,7 @@ var pageTop = ""
 var pageBottom = ""
 
 func main() {
+	//编写一个网页程序，可以让用户输入一连串的数字。计算出这些数字的均值和中值，并且打印出来。
 	http.HandleFunc("/", HomePage)
 	if err := http.ListenAndServe(":9001", nil); err != nil {
 		log.Fatal("服务启动失败", err)
