@@ -21,3 +21,6 @@ func main() {
 		return
 	}
 }
+
+//GET http://localhost:4000/
+//Hello!
