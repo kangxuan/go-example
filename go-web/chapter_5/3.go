@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
+	"log"
 	"time"
 )
 
@@ -36,23 +37,23 @@ func main() {
 	o := orm.NewOrm()
 
 	// 批量插入并返回写入数据
-	//uInfos := []Userinfo{
-	//	{Username: "shan la", Department: "技术部", Created: time.Date(2022, 12, 17, 0, 0, 0, 0, time.Local)},
-	//	{Username: "shan chun", Department: "技术部", Created: time.Date(2022, 12, 18, 0, 0, 0, 0, time.Local)},
-	//}
-	//for _, uInfo := range uInfos {
-	//	id, err := o.Insert(&uInfo)
-	//	log.Printf("successNum: %d, ERR: %v\n", id, err)
-	//}
-	//
-	//// 查询后更新数据
-	//u1 := Userinfo{Uid: 8}
-	//if o.Read(&u1) == nil {
-	//	u1.Department = "机动组"
-	//	if num, err := o.Update(&u1); err != nil {
-	//		fmt.Println("update num: ", num)
-	//	}
-	//}
+	uInfos := []Userinfo{
+		{Username: "shan la", Department: "技术部", Created: time.Date(2022, 12, 17, 0, 0, 0, 0, time.Local)},
+		{Username: "shan chun", Department: "技术部", Created: time.Date(2022, 12, 18, 0, 0, 0, 0, time.Local)},
+	}
+	for _, uInfo := range uInfos {
+		id, err := o.Insert(&uInfo)
+		log.Printf("successNum: %d, ERR: %v\n", id, err)
+	}
+
+	// 查询后更新数据
+	u1 := Userinfo{Uid: 8}
+	if o.Read(&u1) == nil {
+		u1.Department = "机动组"
+		if num, err := o.Update(&u1); err != nil {
+			fmt.Println("update num: ", num)
+		}
+	}
 
 	// 根据条件查询数据
 	var userinfo Userinfo
