@@ -21,6 +21,7 @@ func main() {
 	v := &Servers{Version: "1"}
 	v.Svs = append(v.Svs, server1{"Shanghai_VPN", "127.0.0.1"})
 	v.Svs = append(v.Svs, server1{"Beijing_VPN", "127.0.0.2"})
+	// xml编码
 	//output, err := xml.Marshal(v)
 	output, err := xml.MarshalIndent(v, " ", "    ")
 	if err != nil {
