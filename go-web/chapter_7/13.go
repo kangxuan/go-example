@@ -35,6 +35,7 @@ func EmailDealWith(args ...interface{}) string {
 	return subStrs[0] + " at " + subStrs[1]
 }
 
+// 展示定义模板中可以使用的函数
 func main() {
 	f1 := Friend2{FName: "shan la 1"}
 	f2 := Friend2{FName: "shan la 2"}
