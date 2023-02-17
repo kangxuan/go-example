@@ -19,11 +19,13 @@ type Quotient struct {
 
 type Arith int
 
+// Mul 求乘积
 func (arith *Arith) Mul(args *Args, reply *int) error {
 	*reply = args.A * args.B
 	return nil
 }
 
+// Div 求除
 func (arith *Arith) Div(args *Args, quo *Quotient) error {
 	if args.B == 0 {
 		return errors.New("除数不能为0")
