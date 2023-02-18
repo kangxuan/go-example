@@ -1,3 +1,5 @@
+github.com/astaxie/go-i18n v0.0.0-20121029100057-f979fd2aa531 h1:upyQNaJcf8V4PbpCfU5a7nB0O1Z3mtWoWtzWszY4iVM=
+github.com/astaxie/go-i18n v0.0.0-20121029100057-f979fd2aa531/go.mod h1:b3kaBuMl6HxSqCfPPPW5+sOJvMV9LL+SA1/oizzSRa0=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
