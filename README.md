@@ -10,6 +10,6 @@
 
 * go-web
 
-是ASTA大神出的《Go Web 编程》教程，主要是讲解golang原生对web编程的基础，个人觉得在接触gin、beego等web框架之前，详读一下本教程，对更好的理解框架。
+是ASTA大神出的《Go Web 编程》教程，主要是讲解golang原生对web编程的基础，个人觉得在接触gin、beego等web框架之前，详读一下本教程，对更好地理解框架有好处。
 
 传送门：https://learnku.com/docs/build-web-application-with-golang
