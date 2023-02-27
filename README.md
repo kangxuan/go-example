@@ -6,7 +6,7 @@
 
 是Unknown大神翻译的《the way to go》例子中的代码。个人觉得虽然比较老，但对Golang的基础讲得特别细致，确实是入门好教材。
 
-传送门：https://github.com/unknwon
+传送门：https://github.com/unknwon/the-way-to-go_ZH_CN
 
 * go-web
 
