@@ -18,6 +18,7 @@ func refTag(tt TagType, ix int) {
 }
 
 func main() {
+	// new 出来的是一个指针
 	tt := new(TagType)
 	tt.field1 = false
 	tt.field2 = 10
