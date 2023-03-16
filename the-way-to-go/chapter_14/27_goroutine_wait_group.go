@@ -14,6 +14,11 @@ func helloWord() {
 	wg.Done()
 }
 
+func helloWord1() {
+	fmt.Println("hello word1!")
+	defer wg.Done() // goroutine结束就登记-1
+}
+
 func main() {
 	// 添加一个WaitGroup
 	wg.Add(2)
@@ -23,6 +28,10 @@ func main() {
 
 	fmt.Println("你好，世界！")
 
-	// 等待Done
+	for i := 0; i < 4; i++ {
+		wg.Add(1) // 启动一个goroutine就登记+1
+		go helloWord1()
+	}
+	// 等待所有登记的goroutine都结束
 	wg.Wait()
 }
