@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"sync"
 )
 
@@ -14,8 +15,8 @@ func helloWord() {
 	wg.Done()
 }
 
-func helloWord1() {
-	fmt.Println("hello word1!")
+func hello(i int) {
+	fmt.Println("hello " + strconv.Itoa(i))
 	defer wg.Done() // goroutine结束就登记-1
 }
 
@@ -30,7 +31,7 @@ func main() {
 
 	for i := 0; i < 4; i++ {
 		wg.Add(1) // 启动一个goroutine就登记+1
-		go helloWord1()
+		go hello(i)
 	}
 	// 等待所有登记的goroutine都结束
 	wg.Wait()
