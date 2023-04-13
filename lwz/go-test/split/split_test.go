@@ -20,3 +20,9 @@ func TestMoreSplit(t *testing.T) {
 		t.Errorf("expected:%v, got:%v", want, got)
 	}
 }
+
+func BenchmarkSplit(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Split("a:B:c", ":")
+	}
+}
