@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	ch := make(chan int, 5)
@@ -10,10 +8,7 @@ func main() {
 	for i := 0; i < 5; i++ {
 		ch <- i
 	}
-	f(ch)
-}
-
-func f(ch chan int) {
+	//close(ch)
 	for v := range ch {
 		fmt.Println(v)
 	}
