@@ -9,40 +9,29 @@ type Task1 struct {
 	TaskName string
 }
 
+// sendWork 发送任务到队列
 func sendWork(pending chan *Task1, taskName string) {
 	pending <- &Task1{
 		TaskName: taskName,
 	}
 }
 
+// 监听任务是否结束
 func consumeWork(done chan *Task1) {
-	for t := range done {
-		fmt.Printf("已执行任务:%s\n", t.TaskName)
+	select {
+	case <-done:
+		fmt.Println("没有任务了")
+		return
 	}
-	//for {
-	//	select {
-	//	case t := <-done:
-	//		fmt.Printf("已执行任务:%s\n", t.TaskName)
-	//	default:
-	//		fmt.Println("没有任务了")
-	//		return
-	//	}
-	//}
 }
 
+// 执行任务
 func exec1(task *Task1) {
 	fmt.Printf("正在执行任务：%s\n", task.TaskName)
 }
 
+// Worker1 Worker..
 func Worker1(in, out chan *Task1) {
-	//select {
-	//case t := <-in:
-	//	exec1(t)
-	//default:
-	//	out <- &Task1{
-	//		TaskName: "结束了",
-	//	}
-	//}
 	for {
 		t := <-in
 		exec1(t)

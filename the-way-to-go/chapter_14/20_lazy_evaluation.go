@@ -26,6 +26,12 @@ func main() {
 	fmt.Println(generateInteger())
 	fmt.Println(generateInteger())
 	fmt.Println(generateInteger())
+	fmt.Println(generateInteger())
+	fmt.Println(generateInteger())
+	fmt.Println(generateInteger())
+	fmt.Println(generateInteger())
+	fmt.Println(generateInteger())
+	fmt.Println(generateInteger())
 }
 
 //0
