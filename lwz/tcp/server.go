@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"go-example/lwz/tcp/proto"
 	"io"
 	"net"
 )
@@ -10,18 +11,27 @@ import (
 func process(conn net.Conn) {
 	defer conn.Close()
 	reader := bufio.NewReader(conn)
-	var buf [1024]byte
+	//var buf [1024]byte
 	for {
-		n, err := reader.Read(buf[:])
+		//n, err := reader.Read(buf[:])
+		//if err == io.EOF {
+		//	break
+		//}
+		//if err != nil {
+		//	fmt.Println("read from client failed, err:", err)
+		//	break
+		//}
+		//recvStr := string(buf[:n])
+		//fmt.Println("收到client发来的数据：", recvStr)
+		msg, err := proto.Decode(reader)
 		if err == io.EOF {
-			break
+			return
 		}
 		if err != nil {
-			fmt.Println("read from client failed, err:", err)
-			break
+			fmt.Println("decode msg failed, err:", err)
+			return
 		}
-		recvStr := string(buf[:n])
-		fmt.Println("收到client发来的数据：", recvStr)
+		fmt.Println("收到client发来的数据：", msg)
 	}
 }
 
