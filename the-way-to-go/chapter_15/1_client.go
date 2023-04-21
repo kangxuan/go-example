@@ -10,7 +10,7 @@ import (
 
 func main() {
 	// 客户端
-	// 创建连接器
+	// 1. 创建连接器
 	conn, err := net.Dial("tcp", "localhost:50000")
 	if err != nil {
 		fmt.Println("创建连接器失败", err.Error())
@@ -34,6 +34,7 @@ func main() {
 			return
 		}
 
+		// 向服务端发送数据
 		_, err = conn.Write([]byte(trimmedClient + " says: " + trimmedInput))
 	}
 }
