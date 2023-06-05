@@ -44,7 +44,7 @@ func saleHandlerByRedLock(w http.ResponseWriter, _ *http.Request) {
 }
 
 /* 多机版 */
-func saleByRedLock(ctx context.Context, key string) string {
+/*func saleByRedLock(ctx context.Context, key string) string {
 	client6381 := goredislib.NewClient(&goredislib.Options{
 		Addr:     "172.100.23.28:6381",
 		Password: "123",
@@ -81,13 +81,13 @@ func saleByRedLock(ctx context.Context, key string) string {
 	} else {
 		return fmt.Sprintln("商品已售罄")
 	}
-}
+}*/
 
 /* 单机 */
-/*func saleByRedLock(ctx context.Context, key string) string {
+func saleByRedLock(ctx context.Context, key string) string {
 	client1 := goredislib.NewClient(&goredislib.Options{
 		Addr:     "192.168.10.33:6379",
-		Password: "123",
+		Password: "123456",
 		DB:       0,
 	})
 	pool := goredis.NewPool(client1)
@@ -105,4 +105,4 @@ func saleByRedLock(ctx context.Context, key string) string {
 	} else {
 		return fmt.Sprintln("商品已售罄")
 	}
-}*/
+}
