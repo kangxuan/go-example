@@ -43,7 +43,48 @@ func saleHandlerByRedLock(w http.ResponseWriter, _ *http.Request) {
 	}
 }
 
+/* 多机版 */
 func saleByRedLock(ctx context.Context, key string) string {
+	client6381 := goredislib.NewClient(&goredislib.Options{
+		Addr:     "172.100.23.28:6381",
+		Password: "123",
+		DB:       0,
+	})
+	pool6381 := goredis.NewPool(client6381)
+
+	client6382 := goredislib.NewClient(&goredislib.Options{
+		Addr:     "172.100.23.28:6382",
+		Password: "123",
+		DB:       0,
+	})
+	pool6382 := goredis.NewPool(client6382)
+
+	client6383 := goredislib.NewClient(&goredislib.Options{
+		Addr:     "172.100.23.28:6383",
+		Password: "123",
+		DB:       0,
+	})
+	pool6383 := goredis.NewPool(client6383)
+
+	rs := redsync.New(pool6381, pool6382, pool6383)
+
+	mutex := rs.NewMutex("inventoryRedisLock")
+	// 加锁
+	mutex.LockContext(ctx)
+	// 解锁
+	defer mutex.UnlockContext(ctx)
+	inventoryNum, _ := strconv.Atoi(rdb6.Get(ctx, key).Val())
+	if inventoryNum > 0 {
+		inventoryNum = inventoryNum - 1
+		rdb6.Set(ctx, key, inventoryNum, 0)
+		return fmt.Sprintf("成功卖出一个商品，剩余库存为：%d\n", inventoryNum)
+	} else {
+		return fmt.Sprintln("商品已售罄")
+	}
+}
+
+/* 单机 */
+/*func saleByRedLock(ctx context.Context, key string) string {
 	client1 := goredislib.NewClient(&goredislib.Options{
 		Addr:     "192.168.10.33:6379",
 		Password: "123",
@@ -64,4 +105,4 @@ func saleByRedLock(ctx context.Context, key string) string {
 	} else {
 		return fmt.Sprintln("商品已售罄")
 	}
-}
+}*/
